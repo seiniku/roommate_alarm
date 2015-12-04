@@ -65,7 +65,7 @@ def alert_the_light(alert_light, color):
         max_brightness = 25
 
     # Make sure the light is on, set it to red,
-    # and slow down the transition to 3 seconds.
+    # and set the transition time.
     alert_light.brightness = min_brightness
     alert_light.xy = color
     alert_light.on = True
@@ -77,6 +77,7 @@ def alert_the_light(alert_light, color):
         time.sleep(transition_time/10+flash_delay)
         alert_light.brightness = max_brightness
         time.sleep(transition_time/10+flash_delay)
+
     # Set the light back to the original configuration.
     alert_light.on = on_backup
     alert_light.hue = hue_backup
@@ -123,9 +124,6 @@ def main():
                                  "192.168.1.1",
                                  orchid)
     while True:
-        # device_last_seen = check_for_ip(jason,
-        #                                device_last_seen,
-        #                                firebrick)
         test_device = check_for_ip(test_device)
         jason = check_for_ip(jason)
         time.sleep(10)
