@@ -62,7 +62,7 @@ def alert_the_light(alert_light, color):
         max_brightness = 240
     else:
         min_brightness = 2
-        max_brightness = 25
+        max_brightness = 50
 
     # Make sure the light is on, set it to red,
     # and set the transition time.
@@ -113,21 +113,27 @@ def main():
 
     # Color values can be found at
     # http://www.developers.meethue.com/documentation/hue-xy-values
-    firebrick = [0.6621, 0.3023]
-    # dark_blue = [0.139, 0.081]
-    orchid = [0.3365, 0.1735]
-    # olive = [0.4432, 0.5154]
-    # yellow = [0.4432, 0.5154]
-    # violet = [0.3644, 0.2133]
+    colors = dict()
+    colors['firebrick'] = [0.6621, .3023]
+    colors['dark_blue'] = [0.139, 0.081]
+    colors['orchid'] = [0.3365, 0.1735]
+    colors['olive'] = [0.4432, 0.5154]
+    colors['yellow'] = [0.4432, 0.5154]
+    colors['violet'] = [0.3644, 0.2133]
+
     jason = network_device("jason",
                            "192.168.1.250",
-                           firebrick)
+                           colors['firebrick'])
     justin = network_device("justin",
                             "192.168.1.251",
-                            orchid)
+                            colors['orchid'])
+    test = network_device("test",
+                          "192.168.1.1",
+                          colors['violet'])
     while True:
         justin = check_for_ip(justin)
         jason = check_for_ip(jason)
+        test = check_for_ip(test)
         time.sleep(10)
 
 if __name__ == "__main__":
