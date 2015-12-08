@@ -85,6 +85,7 @@ def alert_the_light(alert_light, color):
         alert_light.brightness = brightness_backup
         alert_light.transitiontime = transition_backup
     else:
+        alert_light.transitiontime = None
         alert_light.on = on_backup
 
 
@@ -111,7 +112,7 @@ def main():
     was last seen on the network. runs until cancelled by user.
     """
 
-    # Color values can be found at
+    # More color values can be found at
     # http://www.developers.meethue.com/documentation/hue-xy-values
     colors = dict()
     colors['firebrick'] = [0.6621, .3023]
@@ -130,6 +131,8 @@ def main():
     test = network_device("test",
                           "192.168.1.1",
                           colors['violet'])
+
+    # This is the main business loop, clearly.
     while True:
         justin = check_for_ip(justin)
         jason = check_for_ip(jason)
