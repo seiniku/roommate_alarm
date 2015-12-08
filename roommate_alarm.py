@@ -66,9 +66,9 @@ def alert_the_light(alert_light, color):
 
     # Make sure the light is on, set it to red,
     # and set the transition time.
+    alert_light.on = True
     alert_light.brightness = min_brightness
     alert_light.xy = color
-    alert_light.on = True
     alert_light.transitiontime = transition_time
 
     # Flash it!
@@ -79,11 +79,13 @@ def alert_the_light(alert_light, color):
         time.sleep(transition_time/10+flash_delay)
 
     # Set the light back to the original configuration.
-    alert_light.on = on_backup
-    alert_light.hue = hue_backup
-    alert_light.xy = xy_backup
-    alert_light.brightness = brightness_backup
-    alert_light.transitiontime = transition_backup
+    if on_backup:
+        alert_light.hue = hue_backup
+        alert_light.xy = xy_backup
+        alert_light.brightness = brightness_backup
+        alert_light.transitiontime = transition_backup
+    else:
+        alert_light.on = on_backup
 
 
 def check_for_ip(device):
@@ -120,11 +122,11 @@ def main():
     jason = network_device("jason",
                            "192.168.1.250",
                            firebrick)
-    test_device = network_device("router",
-                                 "192.168.1.1",
-                                 orchid)
+    justin = network_device("justin",
+                            "192.168.1.251",
+                            orchid)
     while True:
-        test_device = check_for_ip(test_device)
+        justin = check_for_ip(justin)
         jason = check_for_ip(jason)
         time.sleep(10)
 
