@@ -137,7 +137,7 @@ def main():
         justin = check_for_ip(justin)
         jason = check_for_ip(jason)
         test = check_for_ip(test)
-        time.sleep(10)
+        time.sleep(3)
 
 if __name__ == "__main__":
     main()
