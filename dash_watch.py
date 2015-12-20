@@ -1,7 +1,7 @@
 #!/usr/bin/python
 """This script monitors for an IP address and flashes one light in the bedroom
 depending on which lights are available."""
-import subprocess
+import os
 import time
 from datetime import datetime, timedelta
 from phue import Bridge
@@ -102,8 +102,7 @@ def check_for_ip(device):
     """Pings an ip and returns network_device object
        with an updated last_seen property.
     """
-    ping = subprocess.call("ping -c 1 -w 1 " + device.ip + " > /dev/null 2>&1",
-                           shell=True)
+    ping = os.system("ping -c 1 -w 1 " + device.ip + " > /dev/null 2>&1")
     if ping == 0:
         now = datetime.now()
         if (now - device.last_seen) > timedelta(minutes=15):
