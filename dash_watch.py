@@ -108,8 +108,8 @@ def main():
                            colors['firebrick'],
                            "Bedroom_all")
 
-    ziplock = NetworkDevice("ziplock",
-                            "ziplock.bad.wolf",
+    ziploc = NetworkDevice("ziploc",
+                            "ziploc.bad.wolf",
                             colors['firebrick'],
                             "Bedroom_all")
 
@@ -119,7 +119,7 @@ def main():
             glad = check_for_ip(glad)
             tide = check_for_ip(tide)
             finish = check_for_ip(finish)
-            ziplock = check_for_ip(ziplock)
+            ziploc = check_for_ip(ziploc)
             time.sleep(1)
         except KeyboardInterrupt:
             print "Quiting.."
