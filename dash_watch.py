@@ -2,7 +2,6 @@
 """This script monitors for an IP address and flashes one light in the bedroom
 depending on which lights are available."""
 import subprocess
-import time
 from datetime import datetime, timedelta
 from qhue import Bridge
 import logging
@@ -109,9 +108,9 @@ def main():
                            "Bedroom_all")
 
     ziploc = NetworkDevice("ziploc",
-                            "ziploc.bad.wolf",
-                            colors['firebrick'],
-                            "Bedroom_all")
+                           "ziploc.bad.wolf",
+                           colors['firebrick'],
+                           "Bedroom_all")
 
     # This is the main business loop, clearly.
     while True:
@@ -120,7 +119,6 @@ def main():
             tide = check_for_ip(tide)
             finish = check_for_ip(finish)
             ziploc = check_for_ip(ziploc)
-            time.sleep(1)
         except KeyboardInterrupt:
             print "Quiting.."
             exit()
